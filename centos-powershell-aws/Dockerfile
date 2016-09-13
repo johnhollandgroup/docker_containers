@@ -3,6 +3,7 @@ From centos:latest
 RUN yum install -y epel-release
 RUN yum update -y
 RUN yum -y install python-pip
+RUN yum group install -y "Development Tools"
 RUN pip install --upgrade pip
 RUN pip install awscli
 RUN pip install boto
