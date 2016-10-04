@@ -5,6 +5,8 @@ RUN yum update -y
 RUN yum -y install python-pip
 RUN yum group install -y "Development Tools"
 RUN pip install --upgrade pip
+RUN echo "pycparser==2.13" > requirements.txt
+RUN pip install cryptography -r requirements.txt
 RUN pip install awscli
 RUN pip install boto
 RUN rpm -ivh https://github.com/Versent/unicreds/releases/download/v1.5.0/unicreds-1.5.0_1.rpm
