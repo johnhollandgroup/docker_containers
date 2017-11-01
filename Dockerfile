@@ -13,7 +13,7 @@ ENV POWERSHELL_DOWNLOAD_URL https://github.com/PowerShell/PowerShell/releases/do
 RUN curl -L $POWERSHELL_DOWNLOAD_URL --output powershell_linux.rpm
 RUN yum -y install powershell_linux.rpm
 RUN rm powershell_linux.rpm --force
-RUN powershell -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
+RUN pwsh -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
 
 RUN curl -O https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_linux_amd64.zip
 RUN unzip packer_1.1.1_linux_amd64.zip
