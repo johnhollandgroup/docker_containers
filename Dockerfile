@@ -8,15 +8,15 @@ RUN pip install --upgrade pip
 RUN pip install awscli
 RUN pip install boto
 # Change this URL to the exact version you want to install
-ENV POWERSHELL_DOWNLOAD_URL https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.5/powershell-6.0.0_beta.5-1.el7.x86_64.rpm
+ENV POWERSHELL_DOWNLOAD_URL https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.9/powershell-6.0.0_beta.9-1.rhel.7.x86_64.rpm
 
 RUN curl -L $POWERSHELL_DOWNLOAD_URL --output powershell_linux.rpm
 RUN yum -y install powershell_linux.rpm
 RUN rm powershell_linux.rpm --force
 RUN powershell -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
 
-RUN curl -O https://releases.hashicorp.com/packer/1.0.4/packer_1.0.4_linux_amd64.zip
-RUN unzip packer_1.0.4_linux_amd64.zip
+RUN curl -O https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_linux_amd64.zip
+RUN unzip packer_1.1.1_linux_amd64.zip
 RUN cp packer /usr/local/bin/packer
 RUN rm packer
 RUN packer --version
