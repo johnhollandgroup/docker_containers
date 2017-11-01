@@ -4,9 +4,9 @@ This Dockerfile is used to build a docker image containing the following applica
 
 * CentOS
 * boto
-* [packer](http://packer.io) - currently version 1.0.2
+* [packer](http://packer.io) - currently version 1.1.1
 * latest AWS CLI
-* Microsoft PowerShell v6.0.0-beta.1
+* Microsoft PowerShell v6.0.0-beta.9
 * AWSPowerShell dotnetCore PowerShell module
 
 ## local build
