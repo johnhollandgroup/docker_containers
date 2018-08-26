@@ -4,9 +4,7 @@ RUN apk update && apk --no-cache add bash py-pip && apk --no-cache add --virtual
 RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip \
   && unzip terraform_0.11.8_linux_amd64.zip \
-  && mv terraform /usr/bin \
-  && rm terraform_0.11.8_linux_amd64.zip
-RUN apk del wget unzip curl --purge build && rm -rf /var/cache/apk/*
+  && mv terraform /usr/bin
 
 FROM alpine as final
 
