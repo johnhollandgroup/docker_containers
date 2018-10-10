@@ -1,6 +1,7 @@
 From centos:latest
 
 RUN yum update -y
+RUN yum -y install epel-release
 RUN yum -y install python-pip
 RUN yum group install -y "Development Tools"
 RUN pip install --upgrade pip
