@@ -1,27 +1,17 @@
-From centos:latest
+FROM centos:latest
 
-RUN yum update -y
-RUN yum -y install epel-release
-RUN yum -y install python-pip
-RUN yum group install -y "Development Tools"
-RUN pip install --upgrade pip
-RUN pip install awscli
-RUN pip install boto3
-RUN rpm -ivh https://github.com/Versent/unicreds/releases/download/1.5.1/unicreds-1.5.1_1.rpm
+RUN yum -y update && yum -y install epel-release && yum -y groupinstall "Development Tools"
+RUN yum -y install python-pip && pip install --upgrade pip && pip install awscli boto3
+
 # Change this URL to the exact version you want to install
 ENV POWERSHELL_DOWNLOAD_URL https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.1/powershell-6.0.0_beta.1-1.el7.centos.x86_64.rpm
-
 RUN curl -L $POWERSHELL_DOWNLOAD_URL --output powershell_linux.rpm
-RUN yum -y install powershell_linux.rpm
+RUN yum -y install powershell_linux.rpm https://centos7.iuscommunity.org/ius-release.rpm
 RUN rm powershell_linux.rpm --force
 RUN powershell -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
-RUN yum -y install ansible
-RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-RUN yum update -y
-RUN yum -y install which
-RUN yum -y install python36u python36u-libs python36u-devel python36u-pip
+
+RUN yum -y install ansible which python36u python36u-libs python36u-devel python36u-pip
+RUN pip3.6 install --upgrade pip && pip3.6 install boto3
 RUN ln -s $(which python3.6) /usr/local/bin/python3
-RUN pip3.6 install --upgrade pip
-RUN pip3.6 install boto3
-RUN yum clean packages
-RUN yum clean all
+
+RUN yum clean packages && yum clean all
