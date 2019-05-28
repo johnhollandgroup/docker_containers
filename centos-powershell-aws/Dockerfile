@@ -10,6 +10,11 @@ RUN yum -y install powershell_linux.rpm https://centos7.iuscommunity.org/ius-rel
 RUN rm powershell_linux.rpm --force
 RUN powershell -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
 
+# Install Node
+RUN curl -sL https://rpm.nodesource.com/setup | bash -
+RUN yum install -y nodejs
+
+# Install Ansible
 RUN yum -y install ansible which python36u python36u-libs python36u-devel python36u-pip
 RUN pip3.6 install --upgrade pip && pip3.6 install boto3
 RUN ln -s $(which python3.6) /usr/local/bin/python3
