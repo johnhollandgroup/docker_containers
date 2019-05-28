@@ -11,7 +11,7 @@ RUN rm powershell_linux.rpm --force
 RUN powershell -command "Install-Module -Name AwsPowerShell.NetCore -Force -Verbose"
 
 # Install Node
-RUN curl -sL https://rpm.nodesource.com/setup | bash -
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 RUN yum install -y nodejs
 
 # Install Ansible
