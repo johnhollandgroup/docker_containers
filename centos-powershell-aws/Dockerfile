@@ -19,4 +19,7 @@ RUN yum -y install ansible which python36u python36u-libs python36u-devel python
 RUN pip3.6 install --upgrade pip && pip3.6 install boto3
 RUN ln -s $(which python3.6) /usr/local/bin/python3
 
+# Install SAM Local
+RUN pip3.6 install aws-sam-cli
+
 RUN yum clean packages && yum clean all
