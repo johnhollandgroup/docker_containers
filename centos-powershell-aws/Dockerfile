@@ -1,7 +1,7 @@
 FROM centos:latest
 
 RUN yum -y update && yum -y install epel-release && yum -y groupinstall "Development Tools"
-RUN yum -y install python-pip && pip install --upgrade pip && pip install awscli boto3
+RUN yum -y install python3-pip && pip3 install --upgrade pip && pip install awscli boto3
 
 # Change this URL to the exact version you want to install
 ENV POWERSHELL_DOWNLOAD_URL https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-beta.1/powershell-6.0.0_beta.1-1.el7.centos.x86_64.rpm
